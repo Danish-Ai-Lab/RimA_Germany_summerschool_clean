@@ -1,0 +1,74 @@
+# /**/*:
+#   ros__parameters:
+#     broker:
+#       host: 192.168.42.122
+#       port: 1883
+#     bridge:
+#       mqtt2ros:
+#         mqtt_topics:
+#           - vdb_map_sections
+#           - tf
+#           - tf_static
+#           - vdb_map_occupancy
+#           - path
+#           - local_grid
+#           - frontiers
+#         vdb_map_sections:
+#           ros_topic: /vdb_mapping/vdb_map_sections
+#         tf:
+#           ros_topic: /tf
+#         tf_static:
+#           ros_topic: /tf_static
+#         path:
+#           ros_topic: /path
+#         local_grid:
+#           ros_topic: /local_grid
+#         frontiers:
+#           ros_topic: /explore/frontiers
+#
+/**/*:
+  ros__parameters:
+    broker:
+      host: 192.168.42.121
+      port: 1883
+    bridge:
+      mqtt2ros:
+        mqtt_topics:
+          - vdb_map_sections
+          - tf
+          - tf_static
+          - vdb_map_occupancy
+          - path
+          - local_grid
+          - frontiers
+          - compressed_rs_image
+          - compressed_yolo_image
+        vdb_map_sections:
+          ros_topic: /vdb_mapping/vdb_map_sections
+        tf:
+          ros_topic: /tf
+        tf_static:
+          ros_topic: /tf_static
+        path:
+          ros_topic: /path
+        local_grid:
+          ros_topic: /local_grid
+        frontiers:
+          ros_topic: /explore/frontiers
+        compressed_rs_image:
+          # ros_topic: /camera/camera/color/image_raw
+          # ros_type: sensor_msgs/msg/Image
+          ros_topic: /camera/camera/color/image/compressed
+          ros_type: sensor_msgs/msg/CompressedImage
+        # compressed_depth_image:
+        #   ros_topic: /camera/camera/color/image_raw
+        compressed_yolo_image:
+          ros_topic: /yolo/dbg/compressed
+      ros2mqtt:
+        ros_topics:
+          - /goal_pose
+          - /cmd_vel
+        /goal_pose:
+          mqtt_topic: goal_pose
+        /cmd_vel:
+          mqtt_topic: cmd_vels

@@ -1,0 +1,21 @@
+/navpi_local_planner:
+  ros__parameters:
+    map_frame: map
+    robot_frame: base_link
+    sampler_only_mode: false
+    loop_rate: 10.0
+    gains:
+      x:
+        p: 1.4
+        i: 0.0
+        d: 0.0
+        i_max: 0.1
+        i_min: -0.1
+        anti_windup: true
+      yaw:
+        p: 1.0
+        i: 0.05
+        d: 0.2
+        i_max: 0.15
+        i_min: -0.15
+        anti_windup: true

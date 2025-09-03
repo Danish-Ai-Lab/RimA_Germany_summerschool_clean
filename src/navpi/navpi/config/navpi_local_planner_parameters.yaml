@@ -1,0 +1,164 @@
+navpi_local_planner:
+  robot_frame: {
+      type: string,
+      default_value: "base_link",
+      description: "TF Link used to track the robot body!",
+      validation: {
+        not_empty<>: []
+      }
+  }
+  map_frame: {
+      type: string,
+      default_value: "map",
+      description: "TF Link used for the map!",
+      validation: {
+        not_empty<>: []
+      }
+  }
+  goal_distance_tolerance: {
+    type: double,
+    default_value: 0.1,
+    description: "Maximum eucledian distance to goal pose until seen as arrived [in m].",
+    validation: {
+      bounds<>: [0.0, 1.0]
+    }
+  }
+  goal_angular_distance: {
+    type: double,
+    default_value: 0.1,
+    description: "Maximum angular difference to goal pose until seen as arrived [in rad].",
+    validation: {
+      bounds<>: [0.0, 1.0]
+    }
+  }
+
+  disregard_position_accuracy: {
+    type: bool,
+    default_value: false,
+    description: "Should the distance be disregard during final angular approach",
+  }
+
+  adaptive_sampling: {
+    type: bool,
+    default_value: true,
+    description: "Use adaptive sampling!",
+  }
+  loop_rate: {
+    type: double,
+    default_value: 1.0,
+    description: "Rate in which the local planner generates and publishes movement commands",
+    validation: {
+      gt<>: 0.0
+    }
+  }
+
+  twist_directions: {
+    type: string_array,
+    default_value: ["x","y","z","yaw"],
+    description: "Movement direction names for the twist command",
+    read_only: false,
+    validation: {
+      unique<>: null,
+    }
+  }
+
+  consider_altitude: {
+    type: bool,
+    default_value: false,
+    description: "Should the planner consider altitude during calculation",
+  }
+
+  sampler_only_mode: {
+    type: bool,
+    default_value: false,
+    description: "Specifies if only the path sampler is used to publish the next goal"
+  }
+
+  gains:
+    __map_twist_directions:
+      p: {
+        type: double,
+        default_value: 0.0,
+        description: "Proportional gain of the PID controller"
+      }
+      i: {
+        type: double,
+        default_value: 0.0,
+        description: "Integral gain of the PID controller"
+      }
+      d: {
+        type: double,
+        default_value: 0.0,
+        description: "Derivative gain of the PID controller"
+      }
+      i_max: {
+        type: double,
+        default_value: 0.0,
+        description: "I max of the PID controller"
+      }
+      i_min: {
+        type: double,
+        default_value: 0.0,
+        description: "I min of the PID controller"
+      }
+      anti_windup: {
+        type: bool,
+        default_value: false,
+        description: "Anti windup of the PID controller"
+      }
+
+  safety:
+    translation:
+      x:
+        offset: {
+          type: double,
+          default_value: 0.0,
+          description: "Offset of the safety field from the center",
+        }
+        length: {
+          type: double,
+          default_value: 0.0,
+          description: "Length of the safety field",
+        }
+        width: {
+          type: double,
+          default_value: 0.0,
+          description: "Width of the safety field",
+        }
+      y:
+        offset: {
+          type: double,
+          default_value: 0.0,
+          description: "Offset of the safety field from the center",
+        }
+        length: {
+          type: double,
+          default_value: 0.0,
+          description: "Length of the safety field",
+        }
+        width: {
+          type: double,
+          default_value: 0.0,
+          description: "Width of the safety field",
+        }
+    rotation:
+      offset_x: {
+        type: double,
+        default_value: 0.0,
+        description: "Offset of the safety field from the center",
+      }
+      offset_y: {
+        type: double,
+        default_value: 0.0,
+        description: "Offset of the safety field from the center",
+      }
+      length: {
+        type: double,
+        default_value: 0.0,
+        description: "Length of the safety field",
+      }
+      width: {
+        type: double,
+        default_value: 0.0,
+        description: "Width of the safety field",
+      }

@@ -1,0 +1,150 @@
+navpi_global_planner:
+  robot_frame: {
+    type: string,
+    default_value: "base_link",
+    description: "TF Link used to track the robot body!",
+    validation: {
+      not_empty<>: []
+    }
+  }
+  map_frame: {
+    type: string,
+    default_value: "map",
+    description: "TF Link used for the map!",
+    validation: {
+      not_empty<>: []
+    }
+  }
+  distance_tolerance: {
+    type: double,
+    default_value: 0.5,
+    description: "Tolerance of the planner. If path is out of tolerance the planner tries to return an approximate solution"
+  }
+  min_planner_distance: {
+    type: double,
+    default_value: 5.0,
+    description: "Minimal distance to the goal the planner needs to plan. In all other case a direct path towards the goal is returned"
+  }
+  interpolate_path: {
+    type: bool,
+    default_value: false,
+    description: "Specifies whether the path segments should be interpolated into closely spaced subgoals"
+  }
+  debug_mode: {
+    type: bool,
+    default_value: false,
+    description: "Debug Mode"
+  }
+  ground_cache_on: {
+    type: bool,
+    default_value: true,
+    description: "Use Ground cache"
+  }
+  ground_search_level: {
+    type: int,
+    default_value: 12,
+    description: "Search level"
+  }
+  successor_variant: {
+    type: int,
+    default_value: 3,
+    description: "Successor Variant"
+  }
+  successor_restriction: {
+    type: int,
+    default_value: 2,
+    description: "Successor Restriction"
+  }
+  step_height: {
+    type: int,
+    default_value: 4,
+    description: "Step Height"
+  }
+  dilate_level: {
+    type: int,
+    default_value: 4,
+    description: "Dilate level"
+  }
+  closing_level: {
+    type: int,
+    default_value: 3,
+    description: "Closing level"
+  }
+  slope_ground_range: {
+    type: int,
+    default_value: 4,
+    description: "Slope ground range"
+  }
+  max_slope_angle: {
+    type: double,
+    default_value: 45.0,
+    description: "Maximal slope angle"
+  }
+  smooth_path: {
+    type: bool,
+    default_value: false,
+    description: "Should the path be smoothed"
+  }
+  smoothing_data_weight: {
+    type: double,
+    default_value: 0.5,
+    description: "smoothing data weight of path"
+  }
+  smoothing_weight: {
+    type: double,
+    default_value: 0.35,
+    description: "smoothing weight of path"
+  }
+  smoothing_tolerance: {
+    type: double,
+    default_value: 0.000001,
+    description: "smoothing tolerance"
+  }
+  global_planner_retries: {
+    type: int,
+    default_value: 2,
+    description: "Number of retries the planner should do"
+  }
+  recover_at_n_tries: {
+    type: int,
+    default_value: 1,
+    description: "The planner should perform the recovery behaviour at all tries after n"
+  }
+  clear_map_before_retry: {
+    type: bool,
+    default_value: true,
+    description: "Should the planner clear the map before a retry"
+  }
+  clearing_bounding_box:
+    min:
+      x: {
+        type: double,
+        default_value: -1.0,
+        description: "Minimal x extend of bounding box"
+      }
+      y: {
+        type: double,
+        default_value: -1.0,
+        description: "Minimal y extend of bounding box"
+      }
+      z: {
+        type: double,
+        default_value: -0.3,
+        description: "Minimal z extend of bounding box"
+      }
+    max:
+      x: {
+        type: double,
+        default_value: 1.0,
+        description: "Minimal x extend of bounding box"
+      }
+      y: {
+        type: double,
+        default_value: 1.0,
+        description: "Minimal y extend of bounding box"
+      }
+      z: {
+        type: double,
+        default_value: 1.0,
+        description: "Minimal z extend of bounding box"
+      }

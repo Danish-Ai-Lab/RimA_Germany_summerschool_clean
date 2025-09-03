@@ -1,0 +1,5 @@
+include:
+  - project: 'continuous_integration/ci_scripts'
+    ref: master
+    file: '/gitlab-ci-yml/ros2_pipeline.yml'
+

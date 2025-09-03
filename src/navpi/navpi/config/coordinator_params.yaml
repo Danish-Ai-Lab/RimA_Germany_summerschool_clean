@@ -1,0 +1,3 @@
+/navpi_coordinator:
+  ros__parameters:
+    global_planner_timeout: 5.0

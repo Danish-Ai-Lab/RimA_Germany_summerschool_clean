@@ -1,0 +1,57 @@
+{
+  "name": "riss2025",
+  "privileged": true,
+  "remoteUser": "tamer",
+  "image": "osrf/ros:humble-desktop-full",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:1": {
+      "version": "latest",
+      "configureZshAsDefaultShell": true,
+      "username": "tamer",
+      "userUid": "1000",
+      "userGid": "1000"
+    },
+    "ghcr.io/taDachs/devcontainer-features/openvdb:0": { "nproc": 8 },
+    "ghcr.io/tadachs/devcontainer-features/neovim:latest": {},
+    "ghcr.io/tadachs/devcontainer-features/robot-folders:latest": {},
+    "ghcr.io/devcontainers/features/node:1": {},  // for stuff like lsp
+    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+      "packages":  "tmux,python3-virtualenv,python3-venv,ripgrep,stow,clang,libompl-dev,iw,iputils-ping"
+    },
+        // "ghcr.io/devcontainers/features/desktop-lite:1": {},
+
+  },
+  "workspaceFolder": "/home/tamer/ws",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/tamer/ws,type=bind",
+  "containerEnv": {
+    "ROS_LOCALHOST_ONLY": "1"
+  },
+  "runArgs": [
+    "--net=host",
+    "--device=/dev/input"
+  ],
+  "mounts": [
+    {
+      "source": "/tmp/.X11-unix",
+      "target": "/tmp/.X11-unix",
+      "type": "bind",
+      "consistency": "cached",
+    },    
+    {
+      "source": "/dev/dri",
+      "target": "/dev/dri",
+      "type": "bind",
+      "consistency": "cached",
+    },
+  ],
+  "postCreateCommand": {
+    "video-group": "sudo usermod -aG video tamer",
+    "dialout-group": "sudo usermod -aG dialout tamer",
+    "node-install": ". ${NVM_DIR}/nvm.sh && nvm install --lts",
+    "apt-update": "sudo apt update",
+    "rosdep-update": "rosdep update",
+    "catmux-install": "pipx install catmux",
+    "vim-default": "sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60",
+    "shellrc": "sudo ln -s /home/tamer/ws/.devcontainer/.shellrc_local /home/tamer/.shellrc_local"
+  }
+}

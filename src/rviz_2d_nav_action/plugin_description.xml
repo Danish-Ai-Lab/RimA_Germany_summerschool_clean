@@ -1,0 +1,7 @@
+<library path="rviz_2d_nav_action_navpi">
+  <class name="rviz_2d_nav_action_navpi/NavGoalAction" type="rviz_2d_nav_action_navpi::NavGoalTool" base_class_type="rviz_common::Tool">
+    <description>
+      Use a move_base action.
+    </description>
+  </class>
+</library>

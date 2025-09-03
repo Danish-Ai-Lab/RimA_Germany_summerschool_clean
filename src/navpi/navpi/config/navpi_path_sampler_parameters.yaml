@@ -1,0 +1,24 @@
+navpi_path_sampler:
+  chain_angle_difference: {
+    type: double,
+    default_value: 0.5,
+    description: "Maximum angular difference in pose chain until a new segment is started [in rad].",
+    validation: {
+      bounds<>: [0.0, 1.0]
+    }
+  }
+  sample_distance: {
+    type: double,
+    default_value: 1.0,
+    description: "Maximum eucledian distance until an new movement command is send [in m].",
+    validation: {
+      bounds<>: [0.0,5.0]
+    }
+  }
+  use_adaptive_sampling: {
+    type: bool,
+    default_value: false,
+    description: "",
+    validation: {}
+  }
+

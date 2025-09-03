@@ -1,0 +1,54 @@
+/navpi_rmp_local_planner:
+  ros__parameters:
+    map_frame: map
+    robot_frame: base_link
+    loop_rate: 10.0
+    position_attractor:
+      alpha: 0.5
+      eta: 1.0
+      psi_thresh: 10.0
+    position_repulsor:
+      enabled: false
+      epsilon: 0.0
+      alpha: 1e-5
+      eta: 0.0
+      p: 4
+
+    goal_distance_tolerance: 0.1
+    sampling_distance: 2.0
+    obstacle_certainty_thresh: 90.0
+    initial_alignment: true
+
+    debug:
+      force_field:
+        enabled: false
+        size: 2.0 # meters
+        resolution: 0.1
+        arrow_scaler: 1.0
+      obstacles:
+        enabled: true
+
+    path_sampler:
+      sample_distance: 1.0
+
+    # diff drive
+    diff_drive_controller:
+      pid:
+        yaw:
+          p: 1.0
+          i: 0.05
+          d: 0.2
+          i_max: 0.15
+          i_min: -0.15
+          anti_windup: true
+      only_forward: false
+      rotate_in_movement_direction: false
+      bounds:
+        linear:
+          x: 1.0
+          y: 1.0
+          z: 0.0
+        angular:
+          x: 0.0
+          y: 0.0
+          z: 0.5

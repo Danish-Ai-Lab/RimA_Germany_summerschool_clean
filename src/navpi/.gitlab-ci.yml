@@ -1,0 +1,42 @@
+variables:
+  DOCS_SOURCE: "navpi/doc"
+  DRAWIO_VERSION: 21.2.8
+
+build_sphinx_doc:
+  stage: build
+  needs: []
+  image: ubuntu:22.04
+  script:
+    - export LC_ALL=C.UTF-8
+    - export LC_LANG=C.UTF-8
+    - apt-get update
+    - apt-get install -y python3-pip
+    - pip3 install -U sphinx sphinxcontrib-drawio
+    - apt-get install -y xvfb wget libgbm1 libasound2
+    - wget https://github.com/jgraph/drawio-desktop/releases/download/v${DRAWIO_VERSION}/drawio-amd64-${DRAWIO_VERSION}.deb
+    - dpkg -i drawio-amd64-${DRAWIO_VERSION}.deb || true
+    - apt-get install -f -y
+    - sphinx-build -b html ${DOCS_SOURCE} doc_public
+  artifacts:
+    paths:
+      - doc_public
+
+deploy_sphinx_doc:
+  stage: upload
+  tags:
+    - docs_deploy
+  dependencies:
+    - build_sphinx_doc
+  needs:
+    - build_sphinx_doc
+  script:
+    - ssh -p 2201 publisher@ids-services.fzi.de "mkdir -p /public/html/$CI_PROJECT_PATH_SLUG"
+    - rsync -rltv --delete -e 'ssh -p 2201' doc_public/ publisher@ids-services.fzi.de:/public/html/$CI_PROJECT_PATH_SLUG
+
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+
+include:
+  - project: 'continuous_integration/ci_scripts'
+    ref: master
+    file: '/gitlab-ci-yml/ros2_pipeline.yml'

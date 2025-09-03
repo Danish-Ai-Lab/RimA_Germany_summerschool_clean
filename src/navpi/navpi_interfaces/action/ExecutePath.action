@@ -1,0 +1,13 @@
+# Input path from the global planner
+nav_msgs/Path path
+---
+bool success
+Result planner_result
+float64 distance_to_goal
+float64 angle_to_goal
+geometry_msgs/PoseStamped final_pose
+---
+float64 distance_to_goal
+float64 angle_to_goal
+geometry_msgs/PoseStamped current_pose
+geometry_msgs/TwistStamped current_cmd_vel

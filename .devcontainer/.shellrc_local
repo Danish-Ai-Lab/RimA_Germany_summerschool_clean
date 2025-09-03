@@ -1,0 +1,4 @@
+eval "$(register-python-argcomplete ros2)"
+eval "$(register-python-argcomplete colcon)"
+
+alias catmux='tmux -L catmux'

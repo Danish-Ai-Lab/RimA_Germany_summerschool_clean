@@ -1,0 +1,6 @@
+/navpi_global_planner:
+  ros__parameters:
+    map_frame: map
+    robot_frame: base_link
+    recover_at_n_tries: 1
+    global_planner_retries: 1

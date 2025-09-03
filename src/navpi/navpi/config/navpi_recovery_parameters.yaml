@@ -1,0 +1,50 @@
+navpi_recovery:
+  clearing_bounding_box:
+    min:
+      x: {
+        type: double,
+        default_value: -1.0,
+        description: "Minimal x extend of bounding box"
+      }
+      y: {
+        type: double,
+        default_value: -1.0,
+        description: "Minimal y extend of bounding box"
+      }
+      z: {
+        type: double,
+        default_value: -0.3,
+        description: "Minimal z extend of bounding box"
+      }
+    max:
+      x: {
+        type: double,
+        default_value: 1.0,
+        description: "Minimal x extend of bounding box"
+      }
+      y: {
+        type: double,
+        default_value: 1.0,
+        description: "Minimal y extend of bounding box"
+      }
+      z: {
+        type: double,
+        default_value: 1.0,
+        description: "Minimal z extend of bounding box"
+      }
+  robot_frame: {
+    type: string,
+    default_value: "base_link",
+    description: "TF Link used to track the robot body!",
+    validation: {
+      not_empty<>: []
+    }
+  }
+  map_frame: {
+    type: string,
+    default_value: "map",
+    description: "TF Link used for the map!",
+    validation: {
+      not_empty<>: []
+    }
+  }

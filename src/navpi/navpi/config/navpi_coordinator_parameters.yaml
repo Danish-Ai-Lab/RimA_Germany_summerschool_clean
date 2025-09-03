@@ -1,0 +1,6 @@
+navpi_coordinator:
+  global_planner_timeout: {
+    type: double,
+    default_value: 5.0,
+    description: "Timeout for the global planner"
+  }

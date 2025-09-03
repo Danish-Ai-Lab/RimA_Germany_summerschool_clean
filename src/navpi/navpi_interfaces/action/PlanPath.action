@@ -1,0 +1,9 @@
+# Target pose to which the planner should calculate a path
+bool use_start_pose
+geometry_msgs/PoseStamped start_pose
+geometry_msgs/PoseStamped target_pose
+---
+bool success
+Result planner_result
+nav_msgs/Path path
+---

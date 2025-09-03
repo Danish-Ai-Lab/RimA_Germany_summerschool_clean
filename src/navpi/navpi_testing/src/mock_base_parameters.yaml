@@ -1,0 +1,54 @@
+mock_base:
+  robot_frame: {
+    type: string,
+    default_value: "base_link",
+    description: ""
+  }
+  map_frame: {
+    type: string,
+    default_value: "map",
+    description: "",
+  }
+  max_dt: {
+    type: double,
+    default_value: 0.2,
+    description: ""
+  }
+  max_twist_age: {
+    type: double,
+    default_value: 0.5,
+    description: ""
+  }
+
+  initial_pose: {
+    x: {
+      type: double,
+      default_value: 0.0,
+      description: ""
+    },
+    y: {
+      type: double,
+      default_value: 0.0,
+      description: ""
+    },
+    z: {
+      type: double,
+      default_value: 0.3,
+      description: ""
+    },
+    roll: {
+      type: double,
+      default_value: 0.0,
+      description: ""
+    },
+    pitch: {
+      type: double,
+      default_value: 0.0,
+      description: ""
+    },
+    yaw: {
+      type: double,
+      default_value: 0.0,
+      description: ""
+    }
+  }
