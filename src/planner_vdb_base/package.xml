@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>planner_vdb_base</name>
+  <version>0.0.0</version>
+  <description>The planner_vdb_base package</description>
+
+  <maintainer email="grosse@fzi.de">Marvin Große Besselmann</maintainer>
+
+  <author email="grosse@fzi.de">Marvin Große Besselmann</author>
+  <author email="ramona.haeuselmann@gmail.com">Ramona Häuselmann</author>
+  <author email="samuel.mauch@fzi.de">Samuel Mauch</author>
+
+
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <!-- Commonly used license strings: -->
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>TODO</license>
+
+
+  <buildtool_depend>cmake</buildtool_depend>
+  <depend>vdb_mapping</depend>
+
+  <export>
+    <build_type>cmake</build_type>
+  </export>
+</package>
